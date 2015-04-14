@@ -67,7 +67,8 @@ abstract class AbstractRedisInstance implements Redis {
                 System.out.println("REDIS SERVER - " + outputLine);
                 if (outputLine == null) {
                     //Something goes wrong. Stream is ended before server was activated.
-                    throw new RuntimeException("Can't start redis server. Check logs for details.");
+                    new RuntimeException("Can't start redis server. Check logs for details.").printStackTrace(System.out);
+                    break;
                 }
             } while (!outputLine.matches(redisReadyPattern()));
         } finally {
